@@ -19,3 +19,9 @@
 - Extra docs about defining rules see: https://github.com/MirazMac/php-requirements-checker
 - Visit the `checker/index.php` file in a browser to run the checks.
 - When satisfied, delete this directory.
+
+## ToDo
+
+* Test
+* Break the rulesets up into separate files to include like: ruleset/rules-wordpress.php. This way we can slowly build up a set of re-usable rulesets.
+* Create a config file that declares which rulesets to list. Build menu from that. Make it so user doesn't have to edit the index.php file, only the config and adding rulesets.

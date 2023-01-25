@@ -27,7 +27,7 @@ switch ($serverChecker->choice) {
         break;
     case 'wordpress':
         $serverChecker->checker->requirePhpVersion('>=8.0')
-            ->requirePhpExtensions(['pdo', 'mbstring'])
+            ->requirePhpExtensions(['Core', 'curl', 'dom', 'exif', 'fileinfo', 'hash', 'imagick', 'json', 'mbstring', 'mysqli', 'openssl', 'pcre', 'pdo', 'sodium', 'xml', 'zip'])
             ->requireFunctions(['random_bytes'])
             ->requireIniValues([
                 'allow_url_fopen' => true,
