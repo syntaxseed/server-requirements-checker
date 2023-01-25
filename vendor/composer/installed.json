@@ -1,0 +1,52 @@
+{
+    "packages": [
+        {
+            "name": "mirazmac/php-requirements-checker",
+            "version": "0.2",
+            "version_normalized": "0.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MirazMac/php-requirements-checker.git",
+                "reference": "44412624776bbaf8f6ede79f501d1a3026f0e330"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MirazMac/php-requirements-checker/zipball/44412624776bbaf8f6ede79f501d1a3026f0e330",
+                "reference": "44412624776bbaf8f6ede79f501d1a3026f0e330",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4"
+            },
+            "time": "2021-11-05T17:02:39+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "MirazMac\\Requirements\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MirazMac",
+                    "email": "mirazmac@gmail.com"
+                }
+            ],
+            "description": "A quick library to check the current environment against a set of defined requirements. It supports checking for PHP version, OS, Extensions, PHP INI values, Functions, Classes, Apache Modules and local Files and Folders.",
+            "support": {
+                "issues": "https://github.com/MirazMac/php-requirements-checker/issues",
+                "source": "https://github.com/MirazMac/php-requirements-checker/tree/0.2"
+            },
+            "install-path": "../mirazmac/php-requirements-checker"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
