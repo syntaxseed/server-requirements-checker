@@ -15,8 +15,7 @@ switch ($serverChecker->choice) {
             ->requirePhpExtensions(['pdo', 'mbstring'])
             ->requireFunctions(['random_bytes'])
             ->requireFile('./composer.json', Checker::CHECK_FILE_EXISTS)
-            ->requireDirectory('./src', Checker::CHECK_IS_READABLE)
-            ->requireDirectory('./public', Checker::CHECK_IS_READABLE)
+            ->requireDirectory('../../public', Checker::CHECK_IS_READABLE)
             ->requireIniValues([
                 'allow_url_fopen' => true,
                 'memory_limit'  => '>=64M',
