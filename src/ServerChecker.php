@@ -3,19 +3,20 @@ namespace App;
 
 use MirazMac\Requirements\Checker;
 
-
 class ServerChecker
 {
     public Checker $checker;
     public string $choice;
+    private array $config;
 
-    public function __construct(string $choice) {
+    public function __construct(string $choice, array $config) {
         $this->checker = new Checker;
-        $this->choice = $_GET['check'] ?? '';
+        $this->choice = $this->cleanChoice($choice);
+        $this->config = $config;
     }
 
     /**
-     * Run the application and display the result.
+     * Run the application and perform the checking steps.
      */
     public function init()
     {
@@ -25,9 +26,37 @@ class ServerChecker
         }
 
         echo('<h2>Checking ruleset "' . $this->choice . '":</h2>');
+
         $this->printRules();
 
         $this->showResults();
+
+        $this->checkDB();
+    }
+
+    /**
+     * Test the database connection if set in the config.
+     */
+    private function checkDB()
+    {
+        if (!$this->config['db']['testdb']) {
+            return;
+        }
+
+        $mysqli = new \mysqli($this->config['db']['host'], $this->config['db']['user'], $this->config['db']['password'], $this->config['db']['dbname'], $this->config['db']['port']);
+        if ($mysqli->connect_error) {
+            $this->failure('Could not connect to database "'.$this->config['db']['dbname'].'" at "'.$this->config['db']['user'].'@'.$this->config['db']['host'].'".');
+        }else{
+            $this->success('Connected to database "'.$this->config['db']['dbname'].'" at "'.$this->config['db']['user'].'@'.$this->config['db']['host'].'" successfully.');
+        }
+    }
+
+    /**
+     * Clean the string key for the ruleset. Alphanumeric and underscores only.
+     */
+    public function cleanChoice(string $choice): string
+    {
+        return preg_replace('/a-z0-9_/i', '', $choice);
     }
 
     /**
@@ -55,14 +84,28 @@ class ServerChecker
         echo('</ul></div><br clear="all" /><br>');
     }
 
+    /**
+     * Perform the check and output the results.
+     */
     private function showResults(){
         $output = $this->checker->check();
 
         if ($this->checker->isSatisfied()) {
-            echo "<span style='color:#00aa00;font-weight:bold;font-size:1.2em;'>&#x2705; Requirements are met.</span>";
+            $this->success('Requirements are met.');
+
         } else {
-            echo "<span style='color:#cc0000;font-weight:bold;font-size:1.2em;'>&#x274c; Requirements are NOT met:</span><br><br>&bull; ";
-            echo join("<br>\n&bull; ", $this->checker->getErrors());
+            $this->failure('Requirements are NOT met:');
+            echo ('&bull; ' . join("<br>\n&bull; ", $this->checker->getErrors()).'<br>');
         }
+    }
+
+    private function success(string $message)
+    {
+        echo('<br><div style="display:inline-block;color:#00aa00;font-weight:bold;font-size:1.2em;">&#x2705; '.$message.'</div><br>');
+    }
+
+    private function failure(string $message)
+    {
+        echo ('<br><div style="display:inline-block;color:#cc0000;font-weight:bold;font-size:1.2em;">&#x274c; '.$message.'</div><br>');
     }
 }

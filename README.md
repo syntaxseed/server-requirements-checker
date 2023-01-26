@@ -6,7 +6,7 @@
     &nbsp;&nbsp;<a href="https://github.com/syntaxseed#donatecontribute"><img src="https://img.shields.io/badge/Sponsor-Project-blue" alt="Sponsor Project" /></a>
 </div>
 
-* Version: 0.1.0
+* Version: 0.2.0
 * Author: Sherri Wheeler
 * License: MIT
 * Uses: https://github.com/MirazMac/php-requirements-checker
@@ -15,13 +15,14 @@
 
 - Clone this repo into a directory inside your project's public web app directory.
    * `git clone git@github.com:syntaxseed/server-requirements-checker.git checker`
-- Edit your own set of rules in the `index.php` file.
-- Extra docs about defining rules see: https://github.com/MirazMac/php-requirements-checker
+- Create your own rulesets in the `rulesets/` directory.
+   * Copy and edit: `rulesets/rules-example.php`.
+   * Extra docs about defining rules see: https://github.com/MirazMac/php-requirements-checker
+- Create a new config file by copying `config-sample.php` to `config.php` or run: `composer run-script setup`.
+  * Edit the config.php file and define which rulesets to make available in the menu and whether to do a DB test.
 - Visit the `checker/index.php` file in a browser to run the checks.
 - When satisfied, delete this directory.
 
 ## ToDo
 
-* Test
-* Break the rulesets up into separate files to include like: ruleset/rules-wordpress.php. This way we can slowly build up a set of re-usable rulesets.
-* Create a config file that declares which rulesets to list. Build menu from that. Make it so user doesn't have to edit the index.php file, only the config and adding rulesets.
+* ...
