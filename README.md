@@ -25,4 +25,4 @@
 
 ## ToDo
 
-* ...
+* Make it work as a command line tool.
