@@ -13,16 +13,19 @@
 
 ## Usage
 
-- Clone this repo into a directory inside your project's public web app directory.
+* **Pre-requisites:** This tool assumes that you have PHP installed and your webserver configured and a webpage accessible in your webapp. Checking the setup of these basics is beyond the scope of this tool.
+
+1. Clone this repo into a directory inside your project's public web app directory.
    * `git clone git@github.com:syntaxseed/server-requirements-checker.git checker`
-- Create your own rulesets in the `rulesets/` directory.
+2. Create your own rulesets in the `rulesets/` directory.
    * Copy and edit: `rulesets/rules-example.php`.
    * Extra docs about defining rules see: https://github.com/MirazMac/php-requirements-checker
-- Create a new config file by copying `config-sample.php` to `config.php` or run: `composer run-script setup`.
-  * Edit the config.php file and define which rulesets to make available in the menu and whether to do a DB test.
-- Visit the `checker/index.php` file in a browser to run the checks.
-- When satisfied, delete this directory.
+3. Create a new config file by copying `config-sample.php` to `config.php` or run: `composer run-script setup`.
+   * Edit the config.php file and define which rulesets to make available in the menu and whether to do a DB test.
+4. Visit the `checker/index.php` file in a browser to run the checks.
+5. When satisfied, delete this directory.
 
 ## ToDo
 
-* Make it work as a command line tool.
+* Make it work as a command line tool as well.
+* Nicer formatting/basic stylesheet.
